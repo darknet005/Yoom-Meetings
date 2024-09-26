@@ -1,52 +1,32 @@
-import {
-    Sheet,
-    SheetClose,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet"
-import Image from "next/image"
-import Link from "next/link"
+import { icons } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { MobileNav } from './MobileNav'
 
-export const MobileNav = () => {
+const Navbar = () => {
     return (
-        <section className='w-full max-w-[264px]'>
-            <Sheet>
-                <SheetTrigger asChild>
-                    <Image
-                        src="/icons/hamburger.svg"
-                        width={32}
-                        height={3}
-                        alt="hamburger icon"
-                        className="cursor-pointer sm:hideen"
-                    />
-                </SheetTrigger>
-                <SheetContent side="left" className="border-none bg-dark-1">
-                    <Link href="/" className="flex items-center gap-1">
-                        <Image
-                            src="/icons/logo.svg"
-                            width={40}
-                            height={40}
-                            alt='Yoom Logo'
-                            className='max-sm:size-10'
-                        />
-                        <p className='text-[26px] font-extrabold
-                text-white'></p>
-                    </Link>
+        <nav className='flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10'>
+            <Link href="/" className="flex items-center gap-1">
+                <Image
+                    src="/icons/logo.svg"
+                    width={32}
+                    height={32}
+                    alt='Yoom Logo'
+                    className='max-sm:size-10'
+                />
+                <p className='text-[26px] font-extrabold
+                text-white max-sm:hidden'></p>
+            </Link>
 
-                    <div className="flex h-[calc(100vh-72px)]
-                    flex-col justify-between overflow-y-auto"></div>
+            <div className='flex-between gap-5'>
+                {/* Clerk - User Management*/}
 
-                    <SheetClose asChild>
-                        <section className="flex h-full flex-col gap-6 pt-16 text-white">
-                            
-                        </section>
-                    </SheetClose>
+                <MobileNav/>
+            </div>
 
-                </SheetContent>
-            </Sheet>
-        </section>
+        </nav>
     )
 }
+
+export default Navbar
