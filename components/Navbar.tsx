@@ -1,27 +1,32 @@
+import { icons } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { MobileNav } from './MobileNav'
 
-const navbar = () => {
-  return (
-    <nav className='flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10'>
-      <Link href='/' className='flex items-center gap-1'>
-        <Image 
-          src="/iconc/logo.svg"
-          width={32}
-          height={32}
-          alt="Yoom logo"
-          className='max-sm:size-10'
-        />
-        <p className='text-[26px] font-extrabold text-white max-sm:hidden'>Yoom</p>
-      </Link>  
+const Navbar = () => {
+    return (
+        <nav className='flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10'>
+            <Link href="/" className="flex items-center gap-1">
+                <Image
+                    src="/icons/logo.svg"
+                    width={32}
+                    height={32}
+                    alt='Yoom Logo'
+                    className='max-sm:size-10'
+                />
+                <p className='text-[26px] font-extrabold
+                text-white max-sm:hidden'></p>
+            </Link>
 
-      <div className='flex-between gap-5'>
-        {/* Clerk - user management */}
+            <div className='flex-between gap-5'>
+                {/* Clerk - User Management*/}
 
-      </div>    
-    </nav>
-  )
+                <MobileNav/>
+            </div>
+
+        </nav>
+    )
 }
 
-export default navbar
+export default Navbar
