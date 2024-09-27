@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { MobileNav } from './MobileNav'
+import { SignedIn, UserButton } from '@clerk/nextjs'
+
 
 const Navbar = () => {
     return (
@@ -16,13 +18,15 @@ const Navbar = () => {
                     className='max-sm:size-10'
                 />
                 <p className='text-[26px] font-extrabold
-                text-white max-sm:hidden'></p>
+                text-white max-sm:hidden'>Yoom</p>
             </Link>
 
             <div className='flex-between gap-5'>
-                {/* Clerk - User Management*/}
+                <SignedIn>
+                <UserButton />
+                </SignedIn>
 
-                <MobileNav/>
+                <MobileNav />
             </div>
 
         </nav>
