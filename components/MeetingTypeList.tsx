@@ -9,6 +9,7 @@ import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
 import { useToast } from "@/hooks/use-toast"
 import { Textarea } from './ui/textarea'
 import ReactDatePicker from 'react-datepicker';
+import { Input } from './ui/input'
 
 
 const MeetingTypeList = () => {
@@ -72,26 +73,28 @@ const MeetingTypeList = () => {
             className='bg-orange-1'
         />
         <Homecard 
-            img="/icons/join-meeting.svg"
-            title="Join Meeting"
-            description="Via invitation link"
-            handleClick={() => setmeetingState('isJoiningMeeting')}
-            className='bg-blue-1'
-        />
-        <Homecard 
             img="/icons/schedule.svg"
             title="Schedule Meeting"
             description="Plan your meeting"
             handleClick={() => setmeetingState('isScheduleMeeting')}
-            className='bg-purple-1'
-        />
+            className='bg-blue-1'
+            />
         <Homecard 
             img="/icons/recordings.svg"
             title="View Recording"
             description="Check out your recordings"
-            handleClick={() => router.push('/recordings')}
-            className='bg-yellow-1'
+            handleClick={() => router.push('/recording')}
+            className='bg-purple-1'
         />
+        <Homecard 
+            img="/icons/join-meeting.svg"
+            title="Join Meeting"
+            description="Via invitation link"
+            handleClick={() => setmeetingState('isJoiningMeeting')}
+            className='bg-yellow-1'
+            />
+
+ 
         
         {!callDetails ? (
           <MeetingModal
@@ -146,6 +149,21 @@ const MeetingTypeList = () => {
             buttonText="Start Meeting"
             handleClick={createMeeting}
         />
+
+        <MeetingModal
+            isOpen={meetingState === 'isJoiningMeeting'}
+            onClose={() => setmeetingState(undefined)}
+            title="Type the link here"
+            className="text-center"
+            buttonText="Join Meeting"
+            handleClick={() => router.push(values.link)}
+        >
+        <Input
+                placeholder="Meeting link"
+                className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+                onChange={(e) => setvalues({ ...values, link: e.target.value })}
+        />
+        </MeetingModal>
     </section>
   )
 }
